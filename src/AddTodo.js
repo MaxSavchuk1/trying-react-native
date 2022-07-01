@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Alert } from 'react-native';
+import { View, TextInput, Button, Alert } from 'react-native';
+import styles from './../styles';
 
 export default function AddTodo ({ onSubmit }) {
   const [value, setValue] = useState('');
@@ -12,33 +13,16 @@ export default function AddTodo ({ onSubmit }) {
     }
   };
   return (
-    <View style={styles.block}>
+    <View style={styles.addTodoContainer}>
       <TextInput
-        style={styles.input}
+        style={styles.addTodoInput}
         value={value}
         onChangeText={text => setValue(text)}
         placeholder='Название'
         autoCorrect={false}
         autoCapitalize='none'
       />
-      <Button title='Добавить' style={styles.button} onPress={pressHandler} />
+      <Button title='Добавить' onPress={pressHandler} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  block: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 20,
-  },
-  input: {
-    width: '70%',
-    borderWidth: 1,
-    borderColor: 'blue',
-    height: 36,
-    paddingLeft: 10,
-  },
-  button: {},
-});
