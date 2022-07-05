@@ -1,41 +1,30 @@
-import React, { useState } from 'react';
-import { SafeAreaView, View, FlatList, StatusBar } from 'react-native';
-import AddTodo from './src/AddTodo';
-import Navbar from './src/Navbar';
-import Todo from './src/Todo';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView } from 'react-native';
+import * as Progress from 'react-native-progress';
+import { Provider } from 'react-redux';
+import store from './store';
+import MainStack from './navigate';
 import styles from './styles';
-import Animation from './src/Animation';
+import { delay } from './helpers';
 
 export default function App () {
-  const [todos, setTodos] = useState([]);
-  const addTodo = title => {
-    setTodos(prev => [
-      ...prev,
-      {
-        id: Date.now().toString(),
-        title,
-      },
-    ]);
-  };
-  const removeTodo = id => {
-    setTodos(prev => prev.filter(el => el.id !== id));
-  };
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    delay(2500).then(() => {
+      setIsLoading(false);
+    });
+  }, []);
+
   return (
-    <SafeAreaView style={styles.mainContainer}>
-      <Navbar title='Todo App' />
-      <View style={styles.todosContainer}>
-        <AddTodo onSubmit={addTodo} />
-        {todos.length ? (
-          <FlatList
-            data={todos}
-            renderItem={({ item }) => <Todo todo={item} onRemove={removeTodo} />}
-            keyExtractor={item => item.id}
-          />
-        ) : (
-          <Animation />
-        )}
-      </View>
-      <StatusBar hidden={true} />
-    </SafeAreaView>
+    <Provider store={store}>
+      {isLoading ? (
+        <SafeAreaView style={styles.loader}>
+          <Progress.CircleSnail />
+        </SafeAreaView>
+      ) : (
+        <MainStack />
+      )}
+    </Provider>
   );
 }

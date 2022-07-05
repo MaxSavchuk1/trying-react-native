@@ -3,6 +3,11 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   mainContainer: {
     flex: 1,
+    alignItems: 'center',
+    margin: 10,
+  },
+  todosMainContainer: {
+    flex: 1,
   },
   todosContainer: {
     flex: 1,
@@ -13,17 +18,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     borderWidth: 1,
-    borderColor: '#eee',
+    borderColor: '#bbb',
     borderRadius: 5,
     marginVertical: 5,
     shadowRadius: 2,
   },
   navbarContainer: {
-    height: 70,
+    height: 50,
     backgroundColor: 'blue',
-    paddingBottom: 10,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   navbarText: {
     fontSize: 20,
@@ -41,5 +45,16 @@ export default StyleSheet.create({
     borderColor: 'blue',
     height: 36,
     paddingLeft: 10,
+  },
+  loader: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  stickyButton: {
+    right: 10,
+    position: 'absolute',
+    bottom: 10,
+    alignSelf: 'flex-end',
   },
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import styles from './../styles';
 
-export default function Todo ({ todo, onRemove }) {
+export default function Todo ({ todo, onRemove, onUpdate }) {
   const longPressHandler = id => {
     Alert.alert(
       'Удалить дело?',
@@ -23,14 +23,21 @@ export default function Todo ({ todo, onRemove }) {
       }
     );
   };
+
   return (
     <TouchableOpacity
       activeOpacity={0.5}
-      onPress={() => {}}
+      onPress={() => onUpdate({ isDone: !todo.isDone, id: todo.id })}
       onLongPress={() => longPressHandler(todo.id)}
     >
       <View style={styles.todoItem}>
-        <Text>{todo.title}</Text>
+        <Text
+          style={
+            todo.isDone ? { textDecorationLine: 'line-through' } : { textDecorationLine: 'none' }
+          }
+        >
+          {todo.title}
+        </Text>
       </View>
     </TouchableOpacity>
   );
