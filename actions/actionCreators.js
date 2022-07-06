@@ -26,3 +26,22 @@ export const deleteDoneTodos = () => {
     type: ACTION_TYPES.DELETE_DONE_TODOS,
   };
 };
+
+export const getUsersAction = page => ({
+  type: ACTION_TYPES.GET_USERS_ACTION,
+  page,
+});
+
+export const getUsersRequest = () => ({
+  type: ACTION_TYPES.GET_USERS_REQUEST,
+});
+
+export const getUsersSuccess = payload => ({
+  type: ACTION_TYPES.GET_USERS_SUCCESS,
+  payload,
+});
+
+export const getUsersError = error => ({
+  type: ACTION_TYPES.GET_USERS_ERROR,
+  error,
+});
