@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+export const mainColor = '#2196F3';
+
 export default StyleSheet.create({
   mainContainer: {
     flex: 1,
@@ -25,7 +27,7 @@ export default StyleSheet.create({
   },
   navbarContainer: {
     height: 50,
-    backgroundColor: 'blue',
+    backgroundColor: mainColor,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -42,7 +44,7 @@ export default StyleSheet.create({
   addTodoInput: {
     width: '70%',
     borderWidth: 1,
-    borderColor: 'blue',
+    borderColor: mainColor,
     height: 36,
     paddingLeft: 10,
   },
