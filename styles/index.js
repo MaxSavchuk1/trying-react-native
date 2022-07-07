@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-export const mainColor = '#2196F3';
+import CONSTANTS from '../constants';
 
 export default StyleSheet.create({
   mainContainer: {
@@ -27,7 +26,7 @@ export default StyleSheet.create({
   },
   navbarContainer: {
     height: 50,
-    backgroundColor: mainColor,
+    backgroundColor: CONSTANTS.MAIN_COLOR,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -44,7 +43,7 @@ export default StyleSheet.create({
   addTodoInput: {
     width: '70%',
     borderWidth: 1,
-    borderColor: mainColor,
+    borderColor: CONSTANTS.MAIN_COLOR,
     height: 36,
     paddingLeft: 10,
   },
