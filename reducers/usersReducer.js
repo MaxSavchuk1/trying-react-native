@@ -18,8 +18,10 @@ function usersReducer (state = initialState, action) {
       };
     }
     case ACTION_TYPES.GET_USERS_SUCCESS: {
-      const { payload } = action;
-      const newUsers = [...payload];
+      const {
+        payload: { results },
+      } = action;
+      const newUsers = [...state.users, ...results];
       return {
         ...state,
         isFetching: false,
