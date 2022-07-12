@@ -36,7 +36,7 @@ export default function Todo ({ todo, onRemove, onUpdate }) {
             todo.isDone ? { textDecorationLine: 'line-through' } : { textDecorationLine: 'none' }
           }
         >
-          {todo.title}
+          {todo.taskBody}
         </Text>
       </View>
     </TouchableOpacity>
