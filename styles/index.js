@@ -58,4 +58,17 @@ export default StyleSheet.create({
     bottom: 10,
     alignSelf: 'flex-end',
   },
+  mainContainerNavigationItem: {
+    backgroundColor: CONSTANTS.MAIN_COLOR,
+    margin: 10,
+    padding: 10,
+    width: '80%',
+    borderRadius: 10,
+    borderWidth: 2,
+  },
+  mainContainerNavigationItemText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: 'white',
+  },
 });

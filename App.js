@@ -5,15 +5,15 @@ import { Provider } from 'react-redux';
 import store from './store';
 import MainStack from './navigate';
 import styles from './styles';
-import { delay } from './helpers';
+// import { delay } from './helpers';
 
 export default function App () {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    delay(2500).then(() => {
-      setIsLoading(false);
-    });
+    // delay(2500).then(() => {
+    setIsLoading(false);
+    // });
   }, []);
 
   return (

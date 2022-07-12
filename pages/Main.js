@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Button, View } from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import styles from './../styles';
 
 export default function Main ({ navigation }) {
@@ -11,12 +11,20 @@ export default function Main ({ navigation }) {
   };
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <View style={{ margin: 10 }}>
-        <Button title='открыть мои дела' onPress={openTodos} />
-      </View>
-      <View style={{ margin: 10 }}>
-        <Button title='список пользователей' onPress={openUsers} />
-      </View>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.mainContainerNavigationItem}
+        onPress={openTodos}
+      >
+        <Text style={styles.mainContainerNavigationItemText}>Мои дела</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.mainContainerNavigationItem}
+        onPress={openUsers}
+      >
+        <Text style={styles.mainContainerNavigationItemText}>Список пользователей</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
