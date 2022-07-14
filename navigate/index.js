@@ -1,35 +1,30 @@
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import Main from '../pages/Main';
 import Todos from '../pages/Todos';
-import CONSTANTS from '../constants';
 import Users from '../pages/Users';
 import UserFullInfo from '../components/UserFullInfo';
+import CustomDrawer from '../components/CustomDrawer';
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function Navigate () {
-  const headerOptions = title => ({
-    title,
-    headerStyle: { backgroundColor: CONSTANTS.MAIN_COLOR, height: 100 },
-    headerTitleAlign: 'center',
-    headerTitleStyle: {
-      color: 'lightgrey',
-    },
-  });
-
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Main' component={Main} options={headerOptions('Главная')} />
-        <Stack.Screen name='Todos' component={Todos} options={headerOptions('Дела')} />
-        <Stack.Screen name='Users' component={Users} options={headerOptions('Пользователи')} />
-        <Stack.Screen
+      <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />}>
+        <Drawer.Screen name='Main' component={Main} options={{ title: 'Главная' }} />
+        <Drawer.Screen name='Todos' component={Todos} options={{ title: 'Дела' }} />
+        <Drawer.Screen name='Users' component={Users} options={{ title: 'Пользователи' }} />
+        <Drawer.Screen
           name='UserFullInfo'
           component={UserFullInfo}
-          options={headerOptions('Полная информация')}
+          options={{
+            drawerItemStyle: {
+              display: 'none',
+            },
+          }}
         />
-      </Stack.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
