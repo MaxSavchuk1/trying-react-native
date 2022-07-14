@@ -8,6 +8,7 @@ const createApiInstance = (URL = CONSTANTS.BASE_URL) => {
 
   instance.interceptors.request.use(
     config => {
+      config.timeout = 5000;
       return config;
     },
     err => Promise.reject(err)
