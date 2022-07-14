@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, View, FlatList, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -8,10 +8,10 @@ import AddTodo from '../components/AddTodo';
 import Todo from '../components/Todo';
 import styles from '../styles';
 import ZoomAnimation from '../components/ZoomAnimation';
+import Error from '../components/Error';
 
 export default function Todos () {
   const { todos, error, isFetching, tasksAmount } = useSelector(state => state.todos);
-  // console.log(error);
   const dispatch = useDispatch();
   const {
     updateTodoAction,
@@ -48,10 +48,19 @@ export default function Todos () {
 
   return (
     <SafeAreaView style={styles.todosMainContainer}>
-      <View style={styles.todosContainer}>
-        <AddTodo onSubmit={createHandler} />
-        <FlatList data={todos} renderItem={renderItem} keyExtractor={keyExtractor} />
+      <View style={{ height: 15, margin: 3 }}>
+        {isFetching && <ActivityIndicator size='large' />}
       </View>
+
+      {error ? (
+        <Error error={error} reload={getTodosAction} text='При загрузке данных произошла ошибка' />
+      ) : (
+        <View style={styles.todosContainer}>
+          <AddTodo onSubmit={createHandler} />
+          <FlatList data={todos} renderItem={renderItem} keyExtractor={keyExtractor} />
+        </View>
+      )}
+
       {isSomeDone && (
         <TouchableOpacity activeOpacity={0.7} style={styles.stickyButton} onPress={deleteDoneTodos}>
           <ZoomAnimation duration={150}>
